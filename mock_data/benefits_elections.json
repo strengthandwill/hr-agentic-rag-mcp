@@ -1,0 +1,110 @@
+{
+  "_note": "Synthetic benefits election data for CPDA. Fictional, for course project use only.",
+  "elections": {
+    "E001": {
+      "medical_tier": "full_coverage",
+      "dental_enrolled": true,
+      "dental_used_sgd_ytd": 120,
+      "wellness_benefit_cap_sgd": 400,
+      "wellness_used_sgd_ytd": 150,
+      "dependents": []
+    },
+    "E002": {
+      "medical_tier": "full_coverage",
+      "dental_enrolled": true,
+      "dental_used_sgd_ytd": 80,
+      "wellness_benefit_cap_sgd": 400,
+      "wellness_used_sgd_ytd": 400,
+      "dependents": [
+        {"relation": "child", "age": 3, "coverage": "dental_outpatient"}
+      ]
+    },
+    "E003": {
+      "medical_tier": "full_coverage",
+      "dental_enrolled": false,
+      "dental_used_sgd_ytd": 0,
+      "wellness_benefit_cap_sgd": 400,
+      "wellness_used_sgd_ytd": 0,
+      "dependents": []
+    },
+    "E004": {
+      "medical_tier": "full_coverage",
+      "dental_enrolled": true,
+      "dental_used_sgd_ytd": 300,
+      "wellness_benefit_cap_sgd": 400,
+      "wellness_used_sgd_ytd": 50,
+      "dependents": []
+    },
+    "E005": {
+      "medical_tier": "pro_rated_coverage",
+      "dental_enrolled": true,
+      "dental_used_sgd_ytd": 60,
+      "wellness_benefit_cap_sgd": 200,
+      "wellness_used_sgd_ytd": 200,
+      "dependents": [],
+      "note": "Part-time 0.6 FTE - pro-rated coverage per POL-BEN-06 Sec 1"
+    },
+    "E006": {
+      "medical_tier": "not_eligible",
+      "dental_enrolled": false,
+      "dental_used_sgd_ytd": 0,
+      "wellness_benefit_cap_sgd": 0,
+      "wellness_used_sgd_ytd": 0,
+      "dependents": [],
+      "note": "Contractor - not eligible for benefits under POL-BEN-06 Sec 1; see contract terms"
+    },
+    "E007": {
+      "medical_tier": "full_coverage",
+      "dental_enrolled": true,
+      "dental_used_sgd_ytd": 200,
+      "wellness_benefit_cap_sgd": 400,
+      "wellness_used_sgd_ytd": 100,
+      "dependents": [
+        {"relation": "spouse", "age": 41, "coverage": "hospitalisation_50pct"}
+      ]
+    },
+    "E008": {
+      "medical_tier": "emergency_only",
+      "dental_enrolled": false,
+      "dental_used_sgd_ytd": 0,
+      "wellness_benefit_cap_sgd": 0,
+      "wellness_used_sgd_ytd": 0,
+      "dependents": [],
+      "note": "On probation - emergency-only coverage until confirmation per POL-BEN-06 Sec 1"
+    },
+    "E010": {
+      "medical_tier": "full_coverage",
+      "dental_enrolled": true,
+      "dental_used_sgd_ytd": 90,
+      "wellness_benefit_cap_sgd": 400,
+      "wellness_used_sgd_ytd": 220,
+      "dependents": []
+    },
+    "E011": {
+      "medical_tier": "full_coverage",
+      "dental_enrolled": true,
+      "dental_used_sgd_ytd": 150,
+      "wellness_benefit_cap_sgd": 400,
+      "wellness_used_sgd_ytd": 300,
+      "dependents": []
+    },
+    "E012": {
+      "medical_tier": "full_coverage",
+      "dental_enrolled": true,
+      "dental_used_sgd_ytd": 100,
+      "wellness_benefit_cap_sgd": 400,
+      "wellness_used_sgd_ytd": 60,
+      "dependents": []
+    },
+    "E013": {
+      "medical_tier": "full_coverage",
+      "dental_enrolled": true,
+      "dental_used_sgd_ytd": 250,
+      "wellness_benefit_cap_sgd": 400,
+      "wellness_used_sgd_ytd": 380,
+      "dependents": [
+        {"relation": "child", "age": 9, "coverage": "dental_outpatient"}
+      ]
+    }
+  }
+}

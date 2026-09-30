@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Import / build check
+        run: python -c "import app.main; import mcp_server.server; print('imports OK')"
+
+      - name: Build RAG index (ingest smoke test)
+        run: python -m app.rag.ingest
+
+      - name: Run automated tests (health/start check, MCP tool discovery + call, RAG parsing)
+        run: pytest -q
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+
+  deploy:
+    name: Trigger Render deploy
+    needs: test
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Render deploy hook (only runs if tests passed)
+        run: |
+          if [ -n "${{ secrets.RENDER_DEPLOY_HOOK_URL }}" ]; then
+            curl -fsS -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
+            echo "Render deploy triggered."
+          else
+            echo "RENDER_DEPLOY_HOOK_URL secret not set; skipping deploy trigger. Render's own GitHub integration will still auto-deploy on push if configured in the Render dashboard."
+          fi

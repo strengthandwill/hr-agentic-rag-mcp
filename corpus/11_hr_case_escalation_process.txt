@@ -1,0 +1,63 @@
+HR CASE INTAKE & ESCALATION PROCESS
+
+Document ID: POL-HRTRIAGE-11
+Category: Conduct & Compliance
+Effective Date: 2026-01-01
+Owner: People & Culture Team
+Applies to: All CPDA employees
+
+NOTE: Fictional company policy created for this course project. Synthetic data only.
+
+1. PURPOSE
+
+This document describes how People & Culture triages incoming HR cases -- questions,
+complaints, or concerns raised by employees -- to decide whether a case can be answered
+directly with policy information, needs a mock HR ticket opened for tracking, or must be
+escalated to a human HR case officer.
+
+2. SEVERITY TIERS
+
+Tier 1 - Informational: A general policy question with a clear answer in the policy corpus
+(e.g. "how many annual leave days do I get"). Can be answered directly, with citations, by
+the HR assistant or People & Culture, without opening a case.
+
+Tier 2 - Actionable Request: A request that requires looking up the employee's own data and
+may require a follow-up action, such as a PTO request, an expense question tied to the
+employee's role, or a benefits question tied to enrollment status. These may result in a mock
+HR ticket being opened so a human can follow up, but do not require immediate escalation.
+
+Tier 3 - Sensitive / Escalate: Any report touching harassment, discrimination, safety, or a
+significant suspected policy violation (see Workplace Conduct Code POL-CONDUCT-09). These
+must always be escalated to a human People & Culture case officer. An automated assistant
+should not attempt to adjudicate the situation, should express empathy, point to the
+Workplace Conduct Code, and create a mock HR case summary for a human to follow up on -- never
+closing the loop with a definitive resolution on its own.
+
+3. ESCALATION CRITERIA CHECKLIST
+
+A request should be escalated to Tier 3 if it involves any of the following:
+- Allegations of harassment, discrimination, bullying, or retaliation.
+- Safety concerns (physical or psychological).
+- Suspected fraud, data breach, or serious policy violation.
+- Requests explicitly asking to speak to a human HR officer.
+- Situations where the employee expresses distress and the assistant cannot fully resolve the
+  concern with policy information alone.
+
+4. HANDLING AMBIGUOUS REQUESTS
+
+If a request is ambiguous (e.g. missing employee ID, unclear which policy applies, or unclear
+whether it is Tier 1, 2, or 3), the assistant or HR staff member should ask a clarifying
+question before taking any action, rather than guessing. This is especially important before
+creating a ticket or drafting any communication on the employee's behalf.
+
+5. MOCK HR TICKET CREATION
+
+For Tier 2 and Tier 3 cases, a mock HR ticket may be created to track follow-up. Mock ticket
+creation is a reversible, non-binding administrative action -- it does not itself resolve the
+issue -- but it should still only be created after the employee has confirmed they want a
+ticket opened, since it may result in a human HR staff member contacting them.
+
+6. RELATED POLICIES
+
+- Workplace Conduct Code (POL-CONDUCT-09)
+- Manager Approval & Escalation Workflow (POL-APPROVAL-12)

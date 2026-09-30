@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CPDA HR Assistant</title>
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <h1>CivicPulse Digital Agency &mdash; HR Assistant</h1>
+    <p class="subtitle">Agentic RAG + MCP demo (fictional company, course project)</p>
+  </header>
+
+  <main>
+    <section id="chat-window" aria-live="polite"></section>
+
+    <form id="chat-form">
+      <input type="text" id="employee-id" placeholder="Employee ID (optional, e.g. E001)" />
+      <div class="input-row">
+        <input type="text" id="message-input" placeholder="Ask an HR policy question or start a workflow..." autocomplete="off" required />
+        <button type="submit">Send</button>
+      </div>
+    </form>
+
+    <div class="quick-prompts">
+      <span>Try:</span>
+      <button class="quick-btn" data-emp="E001" data-msg="I'm employee E001. Can I take 3 days of PTO next week?">PTO request (E001)</button>
+      <button class="quick-btn" data-emp="E002" data-msg="I'm employee E002. I want to work from Indonesia for 6 weeks starting next month, is that allowed?">Remote work eligibility (E002)</button>
+      <button class="quick-btn" data-emp="" data-msg="What is CPDA's policy on reimbursing a home office chair?">Expense compliance</button>
+      <button class="quick-btn" data-emp="" data-msg="What's the capital of France?">Out-of-scope test</button>
+    </div>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

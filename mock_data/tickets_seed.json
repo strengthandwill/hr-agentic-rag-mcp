@@ -1,0 +1,24 @@
+{
+  "_note": "Seed data for the mock HR ticket store. New tickets created via the create_mock_hr_ticket MCP tool are appended at runtime (in-memory / local SQLite) starting from next_ticket_number. Fictional, for course project use only.",
+  "next_ticket_number": 1003,
+  "tickets": [
+    {
+      "ticket_id": "TCK-1001",
+      "employee_id": "E001",
+      "category": "equipment",
+      "summary": "Requesting a second monitor for home office setup.",
+      "status": "resolved",
+      "created_at": "2026-06-02T09:15:00+08:00",
+      "resolved_at": "2026-06-05T11:00:00+08:00"
+    },
+    {
+      "ticket_id": "TCK-1002",
+      "employee_id": "E007",
+      "category": "benefits",
+      "summary": "Question about adding spouse to hospitalisation coverage after marriage.",
+      "status": "open",
+      "created_at": "2026-09-20T14:30:00+08:00",
+      "resolved_at": null
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "_note": "Synthetic PTO / leave balance data for CPDA, as of 2026-09-30. Fictional, for course project use only.",
+  "as_of_date": "2026-09-30",
+  "balances": {
+    "E001": {
+      "annual_leave_entitlement_days": 21,
+      "annual_leave_used_days": 8.5,
+      "annual_leave_balance_days": 12.5,
+      "carried_forward_days": 2,
+      "family_leave_balance_days": 6,
+      "compassionate_leave_balance_days": 3
+    },
+    "E002": {
+      "annual_leave_entitlement_days": 18,
+      "annual_leave_used_days": 9,
+      "annual_leave_balance_days": 9,
+      "carried_forward_days": 0,
+      "family_leave_balance_days": 6,
+      "compassionate_leave_balance_days": 3
+    },
+    "E003": {
+      "annual_leave_entitlement_days": 15,
+      "annual_leave_used_days": 13.5,
+      "annual_leave_balance_days": 1.5,
+      "carried_forward_days": 0,
+      "family_leave_balance_days": 0,
+      "compassionate_leave_balance_days": 3
+    },
+    "E004": {
+      "annual_leave_entitlement_days": 18,
+      "annual_leave_used_days": 4,
+      "annual_leave_balance_days": 14,
+      "carried_forward_days": 1,
+      "family_leave_balance_days": 6,
+      "compassionate_leave_balance_days": 3
+    },
+    "E005": {
+      "annual_leave_entitlement_days": 9,
+      "annual_leave_used_days": 4,
+      "annual_leave_balance_days": 5,
+      "carried_forward_days": 0,
+      "family_leave_balance_days": 6,
+      "compassionate_leave_balance_days": 3,
+      "note": "Pro-rated at 0.6 FTE per POL-PTO-01 Sec 2"
+    },
+    "E006": {
+      "annual_leave_entitlement_days": 0,
+      "annual_leave_used_days": 0,
+      "annual_leave_balance_days": 0,
+      "carried_forward_days": 0,
+      "family_leave_balance_days": 0,
+      "compassionate_leave_balance_days": 0,
+      "note": "Contractor - not eligible for Annual Leave under POL-PTO-01 Sec 2; see contract terms"
+    },
+    "E007": {
+      "annual_leave_entitlement_days": 21,
+      "annual_leave_used_days": 18,
+      "annual_leave_balance_days": 3,
+      "carried_forward_days": 0,
+      "family_leave_balance_days": 6,
+      "compassionate_leave_balance_days": 3
+    },
+    "E008": {
+      "annual_leave_entitlement_days": 18,
+      "annual_leave_used_days": 0,
+      "annual_leave_balance_days": 0,
+      "carried_forward_days": 0,
+      "family_leave_balance_days": 0,
+      "compassionate_leave_balance_days": 0,
+      "note": "On probation - Annual Leave does not accrue until confirmation per POL-PTO-01 Sec 2"
+    },
+    "E010": {
+      "annual_leave_entitlement_days": 21,
+      "annual_leave_used_days": 6,
+      "annual_leave_balance_days": 15,
+      "carried_forward_days": 3,
+      "family_leave_balance_days": 6,
+      "compassionate_leave_balance_days": 3
+    },
+    "E011": {
+      "annual_leave_entitlement_days": 21,
+      "annual_leave_used_days": 10,
+      "annual_leave_balance_days": 11,
+      "carried_forward_days": 0,
+      "family_leave_balance_days": 6,
+      "compassionate_leave_balance_days": 3
+    },
+    "E012": {
+      "annual_leave_entitlement_days": 21,
+      "annual_leave_used_days": 7,
+      "annual_leave_balance_days": 14,
+      "carried_forward_days": 0,
+      "family_leave_balance_days": 6,
+      "compassionate_leave_balance_days": 3
+    },
+    "E013": {
+      "annual_leave_entitlement_days": 21,
+      "annual_leave_used_days": 12,
+      "annual_leave_balance_days": 9,
+      "carried_forward_days": 4,
+      "family_leave_balance_days": 6,
+      "compassionate_leave_balance_days": 3
+    }
+  }
+}

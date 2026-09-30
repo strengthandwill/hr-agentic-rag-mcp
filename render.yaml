@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: cpda-hr-assistant
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python -m app.rag.ingest && uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    healthCheckPath: /health
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: openai/gpt-oss-120b
+      - key: CHROMA_PERSIST_DIR
+        value: data/chroma
+      - key: CORPUS_DIR
+        value: corpus
+      - key: MOCK_DATA_DIR
+        value: mock_data
+      - key: RETRIEVAL_TOP_K
+        value: "5"
+      - key: AGENT_MAX_TOOL_ITERATIONS
+        value: "6"
+      - key: MCP_SERVER_CMD
+        value: "python -m mcp_server.server"
+      - key: PYTHON_VERSION
+        value: 3.11.9

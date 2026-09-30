@@ -1,0 +1,150 @@
+{
+  "_note": "Synthetic employee data for CivicPulse Digital Agency (CPDA), a fictional company created for this course project. No real individuals are represented.",
+  "employees": [
+    {
+      "employee_id": "E001",
+      "name": "Alice Tan",
+      "role": "Software Engineer II",
+      "department": "Platform Engineering",
+      "employment_type": "full_time",
+      "employment_status": "confirmed",
+      "start_date": "2021-03-01",
+      "manager_id": "E010",
+      "location": "Singapore HQ",
+      "fwa_eligible": true
+    },
+    {
+      "employee_id": "E002",
+      "name": "Bryan Koh",
+      "role": "Product Manager",
+      "department": "Product",
+      "employment_type": "full_time",
+      "employment_status": "confirmed",
+      "start_date": "2023-06-15",
+      "manager_id": "E010",
+      "location": "Singapore HQ",
+      "fwa_eligible": true
+    },
+    {
+      "employee_id": "E003",
+      "name": "Chitra Devi",
+      "role": "Data Analyst",
+      "department": "Data & Insights",
+      "employment_type": "full_time",
+      "employment_status": "confirmed",
+      "start_date": "2025-01-10",
+      "manager_id": "E011",
+      "location": "Singapore HQ",
+      "fwa_eligible": true
+    },
+    {
+      "employee_id": "E004",
+      "name": "Daniel Ong",
+      "role": "IT Support Specialist",
+      "department": "IT Operations",
+      "employment_type": "full_time",
+      "employment_status": "confirmed",
+      "start_date": "2022-09-01",
+      "manager_id": "E012",
+      "location": "Singapore HQ",
+      "fwa_eligible": false
+    },
+    {
+      "employee_id": "E005",
+      "name": "Elaine Wong",
+      "role": "UX Designer",
+      "department": "Product",
+      "employment_type": "part_time",
+      "fte": 0.6,
+      "employment_status": "confirmed",
+      "start_date": "2024-02-01",
+      "manager_id": "E010",
+      "location": "Singapore HQ",
+      "fwa_eligible": true
+    },
+    {
+      "employee_id": "E006",
+      "name": "Farhan Rahman",
+      "role": "Software Engineer (Contractor)",
+      "department": "Platform Engineering",
+      "employment_type": "contractor",
+      "employment_status": "active",
+      "start_date": "2026-04-01",
+      "manager_id": "E010",
+      "location": "Singapore HQ",
+      "fwa_eligible": true
+    },
+    {
+      "employee_id": "E007",
+      "name": "Grace Lim",
+      "role": "HR Business Partner",
+      "department": "People & Culture",
+      "employment_type": "full_time",
+      "employment_status": "confirmed",
+      "start_date": "2020-01-15",
+      "manager_id": "E013",
+      "location": "Singapore HQ",
+      "fwa_eligible": true
+    },
+    {
+      "employee_id": "E008",
+      "name": "Hassan Ibrahim",
+      "role": "Software Engineer I",
+      "department": "Platform Engineering",
+      "employment_type": "full_time",
+      "employment_status": "probation",
+      "start_date": "2026-08-01",
+      "manager_id": "E010",
+      "location": "Singapore HQ",
+      "fwa_eligible": true
+    },
+    {
+      "employee_id": "E010",
+      "name": "Michelle Goh",
+      "role": "Engineering Director",
+      "department": "Platform Engineering",
+      "employment_type": "full_time",
+      "employment_status": "confirmed",
+      "start_date": "2018-04-01",
+      "manager_id": "E013",
+      "location": "Singapore HQ",
+      "fwa_eligible": true
+    },
+    {
+      "employee_id": "E011",
+      "name": "Rajesh Kumar",
+      "role": "Data & Insights Lead",
+      "department": "Data & Insights",
+      "employment_type": "full_time",
+      "employment_status": "confirmed",
+      "start_date": "2019-07-01",
+      "manager_id": "E013",
+      "location": "Singapore HQ",
+      "fwa_eligible": true
+    },
+    {
+      "employee_id": "E012",
+      "name": "Priya Sharma",
+      "role": "IT Operations Lead",
+      "department": "IT Operations",
+      "employment_type": "full_time",
+      "employment_status": "confirmed",
+      "start_date": "2019-11-01",
+      "manager_id": "E013",
+      "location": "Singapore HQ",
+      "fwa_eligible": true
+    },
+    {
+      "employee_id": "E013",
+      "name": "Wei Ling Tan",
+      "role": "Head of People & Culture",
+      "department": "People & Culture",
+      "employment_type": "full_time",
+      "employment_status": "confirmed",
+      "start_date": "2017-02-01",
+      "manager_id": null,
+      "location": "Singapore HQ",
+      "fwa_eligible": true
+    }
+  ]
+}
