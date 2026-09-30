@@ -13,6 +13,10 @@ leave categories) — complete HR policy and operations tasks. It combines:
 
 > No real company, employee, or private data is used anywhere in this repository.
 
+**Deployed application:** https://cpda-hr-assistant.onrender.com
+(health check: https://cpda-hr-assistant.onrender.com/health — see [`deployed.md`](deployed.md)
+for cold-start notes)
+
 See also: [`design-and-evaluation.md`](design-and-evaluation.md) (architecture, RAG/MCP/agent
 design, evaluation results), [`ai-tooling.md`](ai-tooling.md) (how AI coding tools were used),
 [`deployed.md`](deployed.md) (live URL + cold-start notes), [`demo-script.md`](demo-script.md)

@@ -1,11 +1,7 @@
 # Deployment Info
 
-> **TODO (submitter):** fill in the two URLs below after deploying to Render (or an equivalent
-> free-tier host), then remove this notice.
-
-- **Deployed application URL:** `https://<your-service-name>.onrender.com` *(replace with your
-  actual Render URL)*
-- **Health endpoint:** `https://<your-service-name>.onrender.com/health`
+- **Deployed application URL:** `https://cpda-hr-assistant.onrender.com`
+- **Health endpoint:** `https://cpda-hr-assistant.onrender.com/health`
 
 ## How this was deployed
 
