@@ -12,6 +12,82 @@ function el(tag, className, text) {
   return e;
 }
 
+function escapeHtml(str) {
+  const div = document.createElement("div");
+  div.textContent = String(str);
+  return div.innerHTML;
+}
+
+// Minimal, dependency-free markdown -> HTML renderer for a safe subset (bold, italic, inline
+// code, headings, bullet/numbered lists, paragraphs). Escapes all input first so LLM output can
+// never inject raw HTML/script, then only ever re-introduces the specific tags below.
+function renderMarkdown(raw) {
+  const escaped = escapeHtml(raw);
+  const lines = escaped.split("\n");
+  const htmlParts = [];
+  let listType = null; // "ul" | "ol" | null
+  let paragraphBuf = [];
+
+  function flushParagraph() {
+    if (paragraphBuf.length) {
+      htmlParts.push(`<p>${paragraphBuf.join("<br/>")}</p>`);
+      paragraphBuf = [];
+    }
+  }
+  function closeList() {
+    if (listType) {
+      htmlParts.push(`</${listType}>`);
+      listType = null;
+    }
+  }
+  function inline(text) {
+    return text
+      .replace(/`([^`]+)`/g, "<code>$1</code>")
+      .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+      .replace(/(^|[^*])\*([^*\n]+)\*(?!\*)/g, "$1<em>$2</em>")
+      .replace(/__([^_]+)__/g, "<strong>$1</strong>");
+  }
+
+  for (const rawLine of lines) {
+    const line = rawLine.trim();
+    const headingMatch = line.match(/^(#{1,4})\s+(.*)$/);
+    const bulletMatch = line.match(/^[-*]\s+(.*)$/);
+    const numberedMatch = line.match(/^\d+\.\s+(.*)$/);
+
+    if (headingMatch) {
+      flushParagraph();
+      closeList();
+      const level = Math.min(headingMatch[1].length + 2, 6); // keep headings small in a chat bubble
+      htmlParts.push(`<h${level}>${inline(headingMatch[2])}</h${level}>`);
+    } else if (bulletMatch) {
+      flushParagraph();
+      if (listType !== "ul") {
+        closeList();
+        htmlParts.push("<ul>");
+        listType = "ul";
+      }
+      htmlParts.push(`<li>${inline(bulletMatch[1])}</li>`);
+    } else if (numberedMatch) {
+      flushParagraph();
+      if (listType !== "ol") {
+        closeList();
+        htmlParts.push("<ol>");
+        listType = "ol";
+      }
+      htmlParts.push(`<li>${inline(numberedMatch[1])}</li>`);
+    } else if (line === "") {
+      flushParagraph();
+      closeList();
+    } else {
+      closeList();
+      paragraphBuf.push(inline(line));
+    }
+  }
+  flushParagraph();
+  closeList();
+  return htmlParts.join("");
+}
+
 function addUserMessage(text) {
   const wrap = el("div", "msg user");
   const bubble = el("div", "bubble", text);
@@ -36,7 +112,8 @@ function removeLoadingMessage() {
 
 function addAssistantMessage(data) {
   const wrap = el("div", "msg assistant");
-  const bubble = el("div", "bubble", data.answer);
+  const bubble = el("div", "bubble");
+  bubble.innerHTML = renderMarkdown(data.answer);
   wrap.appendChild(bubble);
 
   const meta = el("div", "meta", `${data.latency_ms} ms`);
@@ -53,9 +130,12 @@ function addAssistantMessage(data) {
     details.appendChild(summary);
     data.trace.forEach((step) => {
       const stepEl = el("div", "trace-step");
-      const argsStr = JSON.stringify(step.arguments);
-      stepEl.innerHTML = `<strong>${step.step}. ${step.tool}</strong>(${argsStr}) &rarr; ${step.latency_ms}ms` +
-        (step.error ? `<br/><span style="color:var(--error)">error: ${step.error}</span>` : `<br/><code>${step.result_summary}</code>`);
+      const argsStr = escapeHtml(JSON.stringify(step.arguments));
+      const toolName = escapeHtml(step.tool);
+      stepEl.innerHTML = `<strong>${step.step}. ${toolName}</strong>(${argsStr}) &rarr; ${step.latency_ms}ms` +
+        (step.error
+          ? `<br/><span style="color:var(--error)">error: ${escapeHtml(step.error)}</span>`
+          : `<br/><code>${escapeHtml(step.result_summary)}</code>`);
       details.appendChild(stepEl);
     });
     wrap.appendChild(details);
@@ -68,7 +148,11 @@ function addAssistantMessage(data) {
     details.appendChild(summary);
     data.citations.forEach((c) => {
       const item = el("div", "citation-item");
-      item.innerHTML = `<strong>[${c.doc_id} &sect; ${c.section}]</strong> ${c.doc_title}<br/><em>${(c.snippet || "").slice(0, 200)}...</em>`;
+      const docId = escapeHtml(c.doc_id);
+      const section = escapeHtml(c.section);
+      const docTitle = escapeHtml(c.doc_title);
+      const snippet = escapeHtml((c.snippet || "").slice(0, 200));
+      item.innerHTML = `<strong>[${docId} &sect; ${section}]</strong> ${docTitle}<br/><em>${snippet}...</em>`;
       details.appendChild(item);
     });
     wrap.appendChild(details);
