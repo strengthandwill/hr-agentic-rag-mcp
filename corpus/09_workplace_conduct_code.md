@@ -53,7 +53,65 @@ Employees must disclose outside employment, financial interests, or personal rel
 could reasonably create a conflict of interest with their CPDA role, particularly in
 procurement, hiring, or vendor-facing work.
 
-## 7. Related Policies
+## 7. Social Media and External Communications
+
+Employees should not share Confidential or Restricted CPDA information (as defined in the Data
+Security & Acceptable Use Policy, POL-SEC-05 §4) on personal social media or in public forums.
+Employees speaking publicly in a personal capacity about CPDA should make clear their views are
+their own and not an official CPDA position, unless specifically authorised to speak on CPDA's
+behalf.
+
+## 8. Alcohol and Substance-Free Workplace
+
+CPDA maintains a substance-free workplace. Alcohol may be served at CPDA-organised events with
+manager/People & Culture approval, consumed responsibly; employees are expected to use sound
+judgment and are not permitted to be impaired while performing safety-sensitive duties or
+driving on CPDA business.
+
+## 9. Worked Examples
+
+**Example 1 — Minor interpersonal friction.** Two teammates have a disagreement over code review
+style that becomes tense but is not discriminatory or abusive. Per the escalation tiers described
+in the HR Case Intake & Escalation Process (POL-HRTRIAGE-11 §2), this is typically a Tier 1/2
+matter handled directly by the manager through coaching, not a formal HR case.
+
+**Example 2 — Suspected harassment.** An employee reports that a colleague has repeatedly made
+unwelcome comments about their appearance despite being asked to stop. This meets the Tier 3
+escalation criteria in POL-HRTRIAGE-11 §3 and must be formally escalated to People & Culture for
+intake, not resolved informally by the manager alone.
+
+**Example 3 — Conflict of interest disclosure.** An employee's spouse starts a company that is
+bidding for a CPDA vendor contract the employee is involved in evaluating. Per Section 6, this
+must be disclosed to People & Culture promptly so the employee can be recused from the
+evaluation, protecting both the employee and CPDA's procurement integrity.
+
+## 10. Frequently Asked Questions
+
+**Q: Can I report a conduct concern anonymously?**
+A: The confidential HR case channel (Section 3) keeps reports confidential to the extent
+possible while allowing investigation, but fully anonymous reports may limit People & Culture's
+ability to investigate or follow up; speak with People & Culture about the options available for
+your specific situation.
+
+**Q: What if the concern is about my own manager?**
+A: Report directly to People & Culture or via the confidential HR case channel rather than to
+the manager in question; Section 3 does not require going through your direct manager when they
+are the subject of the concern.
+
+**Q: Does a single verbal warning stay on my record permanently?**
+A: Disciplinary records are retained per CPDA's standard record-retention practice and may be
+considered in future decisions, but an isolated low-severity coaching conversation (as
+distinguished from a formal written warning) is treated as developmental feedback — check with
+People & Culture for specifics of your situation.
+
+**Q: Is venting frustration about work in a private chat with a friend outside CPDA a policy
+violation?**
+A: General venting is not itself a violation, but sharing Confidential or Restricted information
+in that context would breach Section 7 and the Data Security & Acceptable Use Policy
+(POL-SEC-05).
+
+## 11. Related Policies
 
 - **HR Case Intake & Escalation Process (POL-HRTRIAGE-11)**
 - **Data Security & Acceptable Use Policy (POL-SEC-05)**
+- **Manager Approval & Escalation Workflow (POL-APPROVAL-12)**

@@ -5,7 +5,8 @@ An agentic AI system that helps employees of **CivicPulse Digital Agency (CPDA)*
 inspired by publicly reported GovTech Singapore HR practices, e.g. flexi-work terminology and
 leave categories) — complete HR policy and operations tasks. It combines:
 
-- **Policy RAG** over a 12-document synthetic policy corpus (Markdown/HTML/TXT), with citations.
+- **Policy RAG** over a 15-document, ~35-45 page synthetic policy corpus (Markdown/HTML/TXT),
+  with citations.
 - **An agent orchestrator** that plans, selects tools, calls **MCP-exposed tools** over stdio,
   and synthesizes grounded, cited answers.
 - **Mock structured HR data** (employees, PTO balances, benefits elections, HR tickets) — all
@@ -125,7 +126,7 @@ command `pip install -r requirements.txt`, start command
 ```
 app/            FastAPI web app, RAG pipeline, agent orchestrator, MCP client
 mcp_server/     MCP server exposing 8 tools (policy RAG + mock structured data + mock actions)
-corpus/         Synthetic policy documents (12 files: .md / .html / .txt)
+corpus/         Synthetic policy documents (15 files: .md / .html / .txt, ~35-45 pages)
 mock_data/      Synthetic employees, PTO balances, benefits elections, ticket seed data
 evaluation/     25+ eval questions, eval runner script, results write-up
 tests/          pytest suite (health/start, MCP discovery+call, RAG parsing, agent smoke)

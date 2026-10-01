@@ -63,7 +63,58 @@ requests (POL-PTO-01 §3), but are tracked against a separate leave balance cate
 documentation should be provided within 14 days where applicable (birth certificate, marriage
 certificate, death certificate, etc.).
 
-## 8. Related Policies
+## 8. Adoption Leave
+
+Employees who adopt a child under 12 months old are entitled to leave on the same terms as
+Maternity or Paternity Leave in Section 2 (adjusted for the primary/secondary caregiver role),
+subject to supporting adoption documentation submitted to People & Culture.
+
+## 9. Eldercare and Family Care Leave
+
+In addition to Child Care Leave (Section 4), employees caring for an elderly or ill immediate
+family member may request up to 2 days per year of paid Family Care Leave, with supporting
+documentation (e.g. a medical letter) provided within 14 days, consistent with the documentation
+timeline in Section 7.
+
+## 10. Worked Examples
+
+**Example 1 — Overlapping maternity and Annual Leave.** An employee plans to extend their
+16-week Maternity Leave with 2 weeks of Annual Leave immediately afterward. This is permitted;
+the two leave types draw from separate balances (Section 1) and can be scheduled consecutively
+with manager and People & Culture coordination.
+
+**Example 2 — Shared Parental Leave request.** Two CPDA employees who are partners want to
+split 4 weeks of the mother's maternity entitlement. They submit a joint written agreement to
+People & Culture at least 4 weeks before the intended start date per Section 3, specifying how
+the 4 weeks will be divided between them.
+
+**Example 3 — Child Care Leave for a school event.** A parent of a 5-year-old wants to use 1 day
+of Child Care Leave to attend a school event. This is permitted under Section 4 in single-day
+increments without needing to provide a specific reason beyond general child-care purposes.
+
+## 11. Frequently Asked Questions
+
+**Q: Can Child Care Leave be taken in half-day units?**
+A: Yes, consistent with how Annual Leave allows half-day units (POL-PTO-01 §6), Child Care Leave
+may also be taken in half-day increments at manager discretion.
+
+**Q: Does Marriage Leave need to be taken as 3 consecutive days?**
+A: No. The 3 days may be taken flexibly (consecutively or split) within the 3-month window after
+the marriage date described in Section 5, as long as all 3 days are used within that window.
+
+**Q: What documentation is needed for Compassionate Leave?**
+A: A death certificate or other reasonable proof of bereavement should be provided to People &
+Culture within 14 days where available, per Section 7; in sensitive or urgent situations, People
+& Culture may approve leave first and request documentation shortly after.
+
+**Q: Can Extended Child Care Leave (ages 7–12) be combined with standard Child Care Leave (under
+7) if I have children in both age ranges?**
+A: Yes — each entitlement in the Section 1 table applies independently per eligible child age
+range, so a parent with a 5-year-old and a 9-year-old can draw on both the 6-day and 2-day
+entitlements in the same year.
+
+## 12. Related Policies
 
 - **Annual Leave (PTO) Policy (POL-PTO-01)**
 - **Benefits & Medical Insurance Policy (POL-BEN-06)** for dependent coverage after a life event.
+- **Manager Approval & Escalation Workflow (POL-APPROVAL-12)** for approval routing.

@@ -57,7 +57,64 @@ creation is a reversible, non-binding administrative action -- it does not itsel
 issue -- but it should still only be created after the employee has confirmed they want a
 ticket opened, since it may result in a human HR staff member contacting them.
 
-6. RELATED POLICIES
+6. CASE DOCUMENTATION STANDARDS
+
+Every Tier 2 or Tier 3 case, whether or not a formal ticket is created, should be documented
+with: the date and channel of the report, a factual (non-judgmental) summary of what was
+reported, the tier assigned and why, and the next action taken. This documentation standard
+exists so that a human People & Culture officer reviewing the case later has enough context to
+act without having to re-interview the employee from scratch.
+
+7. ROLE OF THE AUTOMATED HR ASSISTANT
+
+An automated assistant (such as this system) may answer Tier 1 questions directly with policy
+citations, gather information and draft a Tier 2 or Tier 3 case summary for human review, and
+explain escalation options to the employee. It must not: promise a specific disciplinary outcome,
+tell the employee a Tier 3 matter has been "resolved," or take any action (such as creating a
+case or drafting a message) without the employee's explicit confirmation, consistent with the
+Agentic System Design safety guardrails this system implements.
+
+8. WORKED EXAMPLES
+
+Example 1 -- Tier 1 handled directly. An employee asks "how many Annual Leave days do I get
+after 5 years." This is answered directly with a citation to the Annual Leave Policy
+(POL-PTO-01), no case or ticket needed.
+
+Example 2 -- Tier 2 with optional ticket. An employee asks whether a laptop expense is
+reimbursable and wants someone to double check their specific situation. The assistant answers
+the policy question directly and offers to open a mock HR ticket (category: expense) for a human
+to review the specific claim, only after the employee confirms they want that.
+
+Example 3 -- Tier 3 escalation. An employee describes a colleague repeatedly making them
+uncomfortable. Per the escalation criteria in Section 3, this is immediately treated as Tier 3:
+the assistant responds with empathy, cites the Workplace Conduct Code (POL-CONDUCT-09), makes
+clear a human People & Culture officer must be involved, and offers (with confirmation) to
+create a mock HR case summary rather than attempting to resolve the situation itself.
+
+9. FREQUENTLY ASKED QUESTIONS
+
+Q: Can a Tier 1 question become a Tier 3 case partway through the conversation?
+A: Yes. If an employee asking a general policy question subsequently discloses something
+matching the Tier 3 criteria in Section 3, the conversation should be re-triaged to Tier 3 from
+that point forward, regardless of how it started.
+
+Q: Does every Tier 2 request result in a ticket being created?
+A: No. Tickets are optional for Tier 2 and are only created with the employee's explicit
+confirmation, per Section 5; many Tier 2 questions are fully resolved by a direct, cited answer
+with no ticket needed.
+
+Q: Who has access to a Tier 3 case summary once created?
+A: Access is limited to People & Culture staff handling the case, consistent with the
+need-to-know principle in the Data Security & Acceptable Use Policy (POL-SEC-05 Section 4) for
+Restricted personal data.
+
+Q: What if an employee asks the assistant to just tell them who is "right" in a workplace
+dispute?
+A: The assistant should decline to adjudicate and instead follow the Tier 3 escalation path in
+Section 2-3, consistent with Section 7's limits on what an automated assistant may do.
+
+10. RELATED POLICIES
 
 - Workplace Conduct Code (POL-CONDUCT-09)
 - Manager Approval & Escalation Workflow (POL-APPROVAL-12)
+- Data Security & Acceptable Use Policy (POL-SEC-05)

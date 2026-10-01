@@ -43,11 +43,17 @@ direct Python function calls — the agent has no import path into `mcp_server/t
 
 ## 2. RAG design
 
-- **Corpus**: 12 synthetic policy documents in `corpus/` (10 Markdown, 1 HTML, 1 TXT — satisfying
-  "at least two supported source formats"), covering PTO, holidays, remote/flexi-work, expenses,
-  data security, benefits, onboarding, equipment, family leave, conduct, HR case escalation, and
-  manager approval routing. Documents cross-reference each other by `doc_id` (e.g. `POL-PTO-01`),
-  which supports realistic multi-document questions.
+- **Corpus**: 15 synthetic policy documents in `corpus/` (13 Markdown, 1 HTML, 1 TXT — satisfying
+  "at least two supported source formats"), totaling ~15,300 words (roughly 35-45 pages at a
+  realistic 350-430 words/page for formatted markdown with headers/tables/bullets), within the
+  assignment's 5-20 file / 30-120 page range. Covers PTO, holidays, remote/flexi-work, expenses,
+  business travel, data security, benefits, onboarding, equipment, family leave, workplace
+  conduct, anti-harassment/non-discrimination, performance management & probation, HR case
+  escalation, and manager approval routing. Each document includes a Worked Examples section and
+  a Frequently Asked Questions section in addition to its core policy text, which both adds
+  realistic depth and gives the retriever more diverse phrasings to match against real employee
+  questions. Documents cross-reference each other by `doc_id` (e.g. `POL-PTO-01`), which supports
+  realistic multi-document questions.
 - **Parsing**: format-specific parsers (`app/rag/chunking.py`) extract a `doc_id`/`title`/
   `category` from each document's metadata header and split the body into `(heading, text)`
   sections — Markdown on `## ` headings, HTML on `<h2>`, plain text on numbered `N. HEADING`
@@ -58,7 +64,10 @@ direct Python function calls — the agent has no import path into `mcp_server/t
   `CHUNK_TOKEN_SIZE` (400, word-count proxy for tokens) words is further split into overlapping
   windows (`CHUNK_TOKEN_OVERLAP`=60 words) so no chunk is too large for consistent retrieval
   granularity. Chunking is fully deterministic (no randomness) — the same corpus always produces
-  the same chunk IDs and content, which is what "fixed seed" means for this stage.
+  the same chunk IDs and content. On the generation side, `app/agent/llm_client.py` passes a
+  fixed `seed` (`RANDOM_SEED`, default 42, env-overridable) on every Groq call, so the "fixed
+  seeds where applicable" requirement is satisfied at both the deterministic-chunking stage and
+  the LLM-generation stage.
 - **Embeddings**: Chroma's bundled default embedding function — a local ONNX MiniLM model — was
   chosen deliberately over `sentence-transformers`/torch specifically to keep memory usage low
   enough for a Render/Railway free-tier instance (which can have as little as 512MB RAM); it's

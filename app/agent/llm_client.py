@@ -4,6 +4,10 @@ Includes small retry/backoff for transient 429 rate-limit responses: Groq's free
 tokens-per-minute cap, which a burst of agent turns (each needing 1-3 sequential completions) can
 occasionally hit. A brief retry turns that into a slightly slower response instead of a failed
 request, which is the graceful-degradation behavior expected of the agent layer.
+
+Every call passes a fixed `seed` (RANDOM_SEED, default 42) so generation is as reproducible as
+Groq's backend allows at a low, non-zero temperature -- this is the generation-side analog of the
+deterministic chunking in app/rag/chunking.py.
 """
 from __future__ import annotations
 
@@ -11,7 +15,7 @@ import asyncio
 
 from groq import APIStatusError, AsyncGroq
 
-from app.config import GROQ_API_KEY, GROQ_MODEL
+from app.config import GROQ_API_KEY, GROQ_MODEL, RANDOM_SEED
 
 _client: AsyncGroq | None = None
 
@@ -38,6 +42,7 @@ async def chat_completion(
         "model": model or GROQ_MODEL,
         "messages": messages,
         "temperature": temperature,
+        "seed": RANDOM_SEED,
     }
     if tools:
         kwargs["tools"] = tools

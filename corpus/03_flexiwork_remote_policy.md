@@ -70,9 +70,88 @@ requests longer than 6 weeks overseas additionally require Head of Department + 
 sign-off. See **Manager Approval & Escalation Workflow (POL-APPROVAL-12)** for routing when a
 manager is unavailable.
 
-## 6. Related Policies
+## 6. Flexi-Load (Part-Time and Reduced-Hours Arrangements)
+
+Employees may request a formal flexi-load arrangement (e.g. a 4-day work week, or reduced daily
+hours) through People & Culture. Flexi-load changes employment type to part-time and affects
+Annual Leave entitlement (POL-PTO-01 §2), benefits tier (POL-BEN-06 §1), and CPF contributions
+pro-rata. Flexi-load arrangements require a minimum 3-month commitment and a written agreement
+specifying the new schedule; reverting to full-time requires 30 days' notice to allow role and
+staffing adjustments.
+
+## 7. Role Eligibility Review
+
+FWA eligibility (Section 1) is reviewed whenever an employee changes role or team, since it is
+tied to job function rather than individual employee. An employee moving from an FWA-eligible
+engineering role into an on-site IT Operations support role, for example, would lose flexi-place
+eligibility from the date of transfer, though flexi-time within the office may still be available
+depending on the new team's operational needs.
+
+## 8. Monitoring and Trust
+
+CPDA does not use continuous activity-monitoring software to track remote employees' keystrokes
+or screen activity. Performance while working remotely is assessed the same way as in-office
+performance: based on agreed outcomes, deliverables, and availability during core collaboration
+hours (10:00–16:00 SGT), consistent with the CPDA Way value of being "Trusted" (POL-CONDUCT-09
+§1).
+
+## 9. Worked Examples
+
+**Example 1 — Routine remote day.** An FWA-eligible software engineer works from home on a
+Tuesday and Thursday most weeks. Because this is within the 3-day/week threshold in Section 2,
+no approval is needed beyond informing their manager as a courtesy.
+
+**Example 2 — Short overseas trip combined with leave.** An employee takes 5 days of Annual
+Leave to visit family in Malaysia, then asks to work remotely for 3 additional days from the
+same location before returning. The 3 working days count toward the Section 4 overseas cap (well
+within the 10-day quarterly limit) and require the standard 2-week-advance Overseas Work
+Notification, even though the trip is personal in nature.
+
+**Example 3 — Denied overseas extension.** An employee already used 8 overseas working days this
+quarter and requests 5 more. Approving this would exceed the 10-working-day quarterly cap in
+Section 4 item 1; the request would need to be scoped down to 2 days, or escalated as a formal
+International Remote Work Exception if a longer stay is genuinely necessary.
+
+**Example 4 — Role change affecting eligibility.** A Software Engineer with full flexi-place
+eligibility transfers internally into an IT Operations role supporting on-site data-centre
+hardware. From the transfer date, they are no longer FWA-eligible for flexi-place under Section
+7, even though their FWA status in the HR system may take a few days to update administratively.
+
+## 10. Frequently Asked Questions
+
+**Q: Does flexi-time mean I can start any time I want?**
+A: No. Flexi-time allows staggered start/end times, but all employees must be reachable and
+available during the core collaboration window of 10:00–16:00 SGT, per Section 1.
+
+**Q: If I am not FWA-eligible, can I still occasionally work from home for a one-off reason
+(e.g. waiting for a delivery)?**
+A: Occasional one-off exceptions are at manager discretion even for non-FWA-eligible roles,
+distinct from a standing flexi-place arrangement; check with your manager directly rather than
+assuming blanket ineligibility applies to every single day.
+
+**Q: I am travelling for a personal holiday to a country on the IT Security watch list. Can I
+still check email?**
+A: Incidental, low-risk access (e.g. checking email via the managed mobile profile) is generally
+different from working full remote days accessing production systems; IT Security's watch-list
+restrictions in POL-SEC-05 §3 apply specifically to production-system access, not to all
+possible contact with CPDA systems while travelling. When in doubt, ask IT Security before the
+trip.
+
+**Q: Can two employees swap approved overseas-work windows if plans change?**
+A: Overseas work approvals are individual and tied to the specific employee, destination, and
+dates reviewed by IT Security; a schedule change requires a new Overseas Work Notification
+rather than an informal swap.
+
+**Q: Does an extended remote week within Singapore (Section 3) count toward the overseas cap?**
+A: No. The quarterly/annual caps in Section 4 apply only to work performed outside Singapore.
+Extended remote weeks within Singapore are governed only by Section 3's approval and advance
+notice requirements.
+
+## 11. Related Policies
 
 - **Data Security & Acceptable Use Policy (POL-SEC-05)** — device, VPN, and data-handling rules
   that apply to all remote and overseas work.
 - **Equipment & Asset Policy (POL-EQP-08)** — what equipment may leave the office and how.
 - **Expense & Reimbursement Policy (POL-EXP-04)** — home office equipment reimbursement.
+- **Annual Leave (PTO) Policy (POL-PTO-01)** and **Benefits & Medical Insurance Policy
+  (POL-BEN-06)** — how a flexi-load arrangement affects leave accrual and benefits tier.

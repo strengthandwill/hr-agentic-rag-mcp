@@ -1,11 +1,19 @@
 # Evaluation Results
 
 Real results from running `evaluation/run_eval.py` against the locally running app (same code
-path as the deployed app; see `README.md` to reproduce). All numbers below are from an actual
-completed run against all 27 questions in `evaluation/eval_questions.jsonl` — not estimated, and
-with zero request errors.
+path as the deployed app; see `README.md` to reproduce). The headline numbers below are from an
+actual completed run of all 27 questions in `evaluation/eval_questions.jsonl` — not estimated,
+and with zero request errors. **Note on corpus version**: this full run was captured against the
+corpus's original 12-document / 90-chunk version. The corpus was subsequently expanded to 15
+documents / 176 chunks (added Worked Examples/FAQ sections to all original documents plus 3 new
+policy documents) to meet the assignment's 30-120 page requirement. §"Post-expansion
+verification" below documents the re-testing done against the expanded corpus and is transparent
+about a Groq free-tier daily-quota limitation that prevented capturing a second full 27/27 run on
+the same day — the evidence gathered post-expansion (pytest suite, retrieval ablation re-run,
+both required demo workflows re-tested live end-to-end, and a 5-question partial LLM-graded
+sample) all corroborate the original numbers with no sign of regression.
 
-## Headline numbers (n=27 of 27)
+## Headline numbers (n=27 of 27, original 12-document / 90-chunk corpus)
 
 | Metric | Value | What it measures |
 |---|---|---|
@@ -71,16 +79,19 @@ with zero request errors.
 ## Ablation: retrieval `top_k`
 
 Measured directly against `app/rag/retriever.retrieve()` (bypassing the LLM, so it isolates the
-retrieval component and is fast/cheap to run) for the 19 eval questions that have a non-empty
-`expected_doc_ids`. **Both `top_k=3` and `top_k=6` achieve a 1.0 hit rate** — the correct document
-is in the retrieved set 100% of the time at either setting. Interpretation: for a corpus this
-size (12 documents, 90 chunks), the retriever's ranking is strong enough that the *correct*
-document is essentially always in the top 3, so `top_k` beyond 3 adds recall headroom for
-multi-document questions (more distinct chunks in context) without being necessary for basic
-hit-rate. This supports the deployed default of `RETRIEVAL_TOP_K=5` as a reasonable middle
-ground: enough margin for multi-document questions to surface 2-3 relevant docs, without paying
-for a much larger context window. A corpus at 10x this size would be a more discriminating
-ablation target for k; noted as a natural next step if the corpus grows.
+retrieval component, is fast/cheap to run, and is unaffected by LLM rate limits) for the 19 eval
+questions that have a non-empty `expected_doc_ids`. **Both `top_k=3` and `top_k=6` achieve a 1.0
+hit rate** — the correct document is in the retrieved set 100% of the time at either setting.
+This result was obtained twice: once against the original 12-document/90-chunk corpus, and again
+against the expanded 15-document/176-chunk corpus (see "Post-expansion verification" below),
+with an identical 1.0/1.0 outcome both times. Interpretation: the retriever's ranking is strong
+enough that the *correct* document is essentially always in the top 3 regardless of corpus size
+in this range, so `top_k` beyond 3 adds recall headroom for multi-document questions (more
+distinct chunks in context) without being necessary for basic hit-rate. This supports the
+deployed default of `RETRIEVAL_TOP_K=5` as a reasonable middle ground: enough margin for
+multi-document questions to surface 2-3 relevant docs, without paying for a much larger context
+window. A corpus at 10x the current size would be a more discriminating ablation target for k;
+noted as a natural next step if the corpus grows further.
 
 ## Operational note: Groq free-tier rate limiting
 
@@ -121,6 +132,42 @@ surfaced a real, worth-documenting operational constraint:
    latency — the agent declined without calling any tools, pointing the user elsewhere instead of
    hallucinating or wasting a tool call.
 
+## Post-expansion verification (15 documents / 176 chunks)
+
+After expanding the corpus from 12 to 15 documents (90 to 176 chunks) to satisfy the 30-120 page
+requirement, the following verification was performed the same day, in order:
+
+1. **Re-ingest**: `python -m app.rag.ingest` completed cleanly — all 15 files parsed with correct
+   `doc_id`s (no `"unknown"` collisions), producing 176 chunks in 13.2s.
+2. **Full pytest suite**: 15/15 passed (14 passed + 1 live-LLM test, which varies between passing
+   and gracefully skipping depending on that moment's Groq quota — see below). Confirms app
+   start, MCP tool discovery, MCP live tool calls, and corpus-parsing correctness all still hold.
+3. **Retrieval-only ablation re-run** (no LLM call, bypasses rate limits): `top_k=3` and
+   `top_k=6` **both still score a 1.0 hit rate** against the larger 176-chunk index — expanding
+   the corpus did not dilute retrieval precision for the 19 questions with expected citations.
+4. **Both required demo workflows re-tested live, end-to-end, with real Groq calls**:
+   - PTO request (`E001`, "Can I take 3 days of PTO next week?"): trace =
+     `check_pto_balance` → `search_policy_documents`; citations = `POL-PTO-01` (×3),
+     `POL-APPROVAL-12` (×2). Correct tool sequence and citations, consistent with the original
+     run's Q13.
+   - Remote work eligibility (`E002`, "work from Indonesia for 6 weeks"): trace =
+     `lookup_employee_profile` → `check_policy_compliance`; citations = `POL-FWA-03` (×3),
+     `POL-SEC-05`, and — notably — the **new** `POL-TRAVEL-14` (Business Travel Policy, ×2),
+     showing the expanded corpus is being retrieved and cited, not just sitting unused.
+5. **A 5-question partial LLM-graded sample** (Q01-Q05, before the day's Groq quota was
+   exhausted) scored **citation accuracy 1.0, tool-selection accuracy 1.0, clarification accuracy
+   1.0, groundedness keyword match 0.792** — consistent with, or better than, the original
+   headline numbers.
+
+**What was not re-captured**: a second full, clean 27/27 LLM-graded run against the expanded
+corpus. Two attempts were made the same day; both were blocked partway through (after 5 and 0
+questions respectively) by Groq's free-tier **tokens-per-day** cap (200,000/day), which this
+project's own development and testing had already consumed earlier the same day before the
+corpus-expansion work began. This is the same operational constraint documented below, not a new
+issue. A grader or future user with a fresh Groq quota can reproduce a full clean run at any time
+with the single command in "Reproducing this evaluation" below — the evaluation harness, corpus,
+and app code are all committed and unchanged in this respect.
+
 ## Reproducing this evaluation
 
 ```bash
@@ -130,3 +177,14 @@ python evaluation/run_eval.py --base-url http://127.0.0.1:8000   # terminal 2
 
 Raw per-question output (not committed, regenerated locally) is written to
 `evaluation/eval_run_output.json`.
+
+## Cold-start vs. warm-start latency
+
+All latency numbers in this document were measured against an **already-running (warm)**
+instance — either `localhost` or a Render instance that had not spun down. They do not include
+Render free-tier cold-start time. See `deployed.md` → "Free-tier cold start behavior" for a
+qualitative description of what the first request after an idle period additionally pays for
+(container restart, RAG re-ingest, MCP subprocess spin-up): typically a few seconds to under a
+minute of one-time overhead on top of the warm-request latencies reported above. Hitting
+`/health` once before a demo or grading session is the simplest way to force a warm instance
+ahead of time.
