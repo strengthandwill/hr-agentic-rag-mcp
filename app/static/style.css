@@ -248,6 +248,22 @@ details.trace summary, details.citations summary {
 .trace-step code { background: transparent; }
 .citation-item { border-top: 1px solid var(--border); padding: 0.35rem 0; }
 .citation-item:first-of-type { border-top: none; }
+.citation-snippet {
+  margin-top: 0.2rem;
+  color: var(--muted);
+  font-style: italic;
+}
+.citation-snippet p { margin: 0 0 0.4em; }
+.citation-snippet p:last-child { margin-bottom: 0; }
+.citation-snippet ul,
+.citation-snippet ol { margin: 0 0 0.4em; padding-left: 1.1em; }
+.citation-snippet li { margin: 0.1em 0; }
+.citation-snippet code {
+  font-style: normal;
+  background: rgba(127, 127, 127, 0.18);
+  border-radius: 4px;
+  padding: 0.05em 0.3em;
+}
 
 .escalated-badge {
   display: inline-block;

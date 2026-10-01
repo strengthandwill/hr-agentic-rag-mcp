@@ -97,8 +97,13 @@ function renderMarkdown(raw) {
     } else if (line === "") {
       flushParagraph();
       closeList();
+    } else if (listType) {
+      // Soft-wrapped continuation of the current list item (common in the source policy
+      // corpus, which hand-wraps long list entries across multiple indented lines) -- append
+      // to the open <li> instead of closing the list and starting a stray paragraph.
+      const lastIdx = htmlParts.length - 1;
+      htmlParts[lastIdx] = htmlParts[lastIdx].replace(/<\/li>$/, ` ${inline(line)}</li>`);
     } else {
-      closeList();
       paragraphBuf.push(inline(line));
     }
   }
@@ -176,8 +181,8 @@ function addAssistantMessage(data) {
       const docId = escapeHtml(c.doc_id);
       const section = escapeHtml(c.section);
       const docTitle = escapeHtml(c.doc_title);
-      const snippet = escapeHtml((c.snippet || "").slice(0, 200));
-      item.innerHTML = `<strong>[${docId} &sect; ${section}]</strong> ${docTitle}<br/><em>${snippet}...</em>`;
+      const snippetHtml = renderMarkdown((c.snippet || "").slice(0, 200) + "...");
+      item.innerHTML = `<strong>[${docId} &sect; ${section}]</strong> ${docTitle}<div class="citation-snippet">${snippetHtml}</div>`;
       details.appendChild(item);
     });
     wrap.appendChild(details);
