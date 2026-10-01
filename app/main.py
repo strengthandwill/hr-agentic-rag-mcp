@@ -12,12 +12,14 @@ import time
 import uuid
 from pathlib import Path
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
+from groq import APIConnectionError, APIStatusError
 from pydantic import BaseModel
 
 from app.agent.orchestrator import run_agent_turn
+from app.config import GROQ_API_KEY
 from app.mcp_client.client import create_mcp_client
 from app.rag import vector_store
 from app.rag.ingest import run_ingest
@@ -95,14 +97,16 @@ async def health():
         rag_ok = False
 
     uptime = time.time() - app_state["started_at"] if app_state.get("started_at") else 0
+    groq_api_key_configured = bool(GROQ_API_KEY)
 
     return {
-        "status": "ok" if (mcp_connected and rag_ok) else "degraded",
+        "status": "ok" if (mcp_connected and rag_ok and groq_api_key_configured) else "degraded",
         "app": "cpda-hr-assistant",
         "mcp_connected": mcp_connected,
         "mcp_tool_count": tool_count,
         "rag_index_ready": rag_ok,
         "rag_chunk_count": chunk_count,
+        "groq_api_key_configured": groq_api_key_configured,
         "uptime_seconds": round(uptime, 1),
     }
 
@@ -114,8 +118,26 @@ async def chat(req: ChatRequest):
     lock: asyncio.Lock = app_state["call_lock"]
 
     start = time.time()
-    async with lock:
-        result = await run_agent_turn(session_id, req.message, mcp_client)
+    try:
+        async with lock:
+            result = await run_agent_turn(session_id, req.message, mcp_client)
+    except APIStatusError as exc:
+        print(f"[/chat] Groq APIStatusError status={exc.status_code}: {exc}")
+        if exc.status_code == 429:
+            raise HTTPException(
+                status_code=503,
+                detail="The LLM provider's free-tier rate limit was reached. Please wait a bit and try again.",
+            ) from exc
+        raise HTTPException(
+            status_code=502,
+            detail=f"The LLM provider returned an error (status {exc.status_code}). Please try again shortly.",
+        ) from exc
+    except APIConnectionError as exc:
+        print(f"[/chat] Groq APIConnectionError: {exc}")
+        raise HTTPException(
+            status_code=502,
+            detail="Could not reach the LLM provider. Please try again shortly.",
+        ) from exc
     latency_ms = int((time.time() - start) * 1000)
 
     return ChatResponse(

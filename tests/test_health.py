@@ -6,6 +6,7 @@ index if needed and spawns the MCP server subprocess) actually runs, giving a re
 """
 from fastapi.testclient import TestClient
 
+from app.config import GROQ_API_KEY
 from app.main import app
 
 
@@ -16,11 +17,13 @@ def test_health_endpoint_reports_ready_app():
 
         data = resp.json()
         assert data["app"] == "cpda-hr-assistant"
-        assert data["status"] == "ok"
         assert data["mcp_connected"] is True
         assert data["mcp_tool_count"] == 8
         assert data["rag_index_ready"] is True
         assert data["rag_chunk_count"] > 0
+        assert data["groq_api_key_configured"] is bool(GROQ_API_KEY)
+        expected_status = "ok" if GROQ_API_KEY else "degraded"
+        assert data["status"] == expected_status
 
 
 def test_index_page_serves():
