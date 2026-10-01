@@ -2,8 +2,27 @@ const chatWindow = document.getElementById("chat-window");
 const form = document.getElementById("chat-form");
 const input = document.getElementById("message-input");
 const empInput = document.getElementById("employee-id");
+const statusPill = document.getElementById("status-pill");
+const statusText = document.getElementById("status-text");
 
 let sessionId = localStorage.getItem("cpda_session_id") || null;
+
+async function refreshStatus() {
+  try {
+    const resp = await fetch("/health");
+    const data = await resp.json();
+    const ok = data.status === "ok";
+    statusPill.className = "header-status " + (ok ? "ok" : "degraded");
+    statusText.textContent = ok
+      ? `Online — ${data.mcp_tool_count} MCP tools, ${data.rag_chunk_count} policy chunks indexed`
+      : "Degraded — some capabilities may be unavailable";
+  } catch (err) {
+    statusPill.className = "header-status error";
+    statusText.textContent = "Unable to reach the assistant service";
+  }
+}
+refreshStatus();
+setInterval(refreshStatus, 60000);
 
 function el(tag, className, text) {
   const e = document.createElement(tag);
@@ -88,7 +107,13 @@ function renderMarkdown(raw) {
   return htmlParts.join("");
 }
 
+function removeEmptyState() {
+  const empty = chatWindow.querySelector(".empty-state");
+  if (empty) empty.remove();
+}
+
 function addUserMessage(text) {
+  removeEmptyState();
   const wrap = el("div", "msg user");
   const bubble = el("div", "bubble", text);
   wrap.appendChild(bubble);

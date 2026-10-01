@@ -3,34 +3,69 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#00205B" />
 <title>CPDA HR Assistant</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2300205B'/%3E%3Cpath d='M18 40 L32 16 L46 40 Z' fill='%23EF3340'/%3E%3C/svg%3E" />
 <link rel="stylesheet" href="/static/style.css" />
 </head>
 <body>
-  <header>
-    <h1>CivicPulse Digital Agency &mdash; HR Assistant</h1>
-    <p class="subtitle">Agentic RAG + MCP demo (fictional company, course project)</p>
+  <div class="masthead">
+    <div class="masthead-inner">
+      <span class="masthead-badge" aria-hidden="true">i</span>
+      <span>Fictional Singapore government-technology agency &middot; built for an AI engineering course project, not an official government service</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">CP</div>
+        <div class="brand-text">
+          <span class="brand-name">CivicPulse Digital Agency</span>
+          <span class="brand-tagline">HR Policy &amp; Workflow Assistant</span>
+        </div>
+      </div>
+      <div class="header-status" id="status-pill" role="status">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span id="status-text">Checking system status&hellip;</span>
+      </div>
+    </div>
   </header>
 
   <main>
-    <section id="chat-window" aria-live="polite"></section>
+    <div class="chat-card">
+      <section id="chat-window" aria-live="polite">
+        <div class="empty-state">
+          <p class="empty-title">Ask about CPDA policy, or start a guided workflow</p>
+          <p class="empty-sub">Answers are grounded in the policy corpus with citations, and HR data lookups use mock employee records.</p>
+        </div>
+      </section>
 
-    <form id="chat-form">
-      <input type="text" id="employee-id" placeholder="Employee ID (optional, e.g. E001)" />
-      <div class="input-row">
-        <input type="text" id="message-input" placeholder="Ask an HR policy question or start a workflow..." autocomplete="off" required />
-        <button type="submit">Send</button>
+      <form id="chat-form">
+        <label class="field-label" for="employee-id">Employee ID (optional)</label>
+        <input type="text" id="employee-id" placeholder="e.g. E001" />
+        <div class="input-row">
+          <input type="text" id="message-input" placeholder="Ask an HR policy question or start a workflow&hellip;" autocomplete="off" required aria-label="Message" />
+          <button type="submit">Send</button>
+        </div>
+      </form>
+
+      <div class="quick-prompts">
+        <span class="quick-prompts-label">Try a demo task:</span>
+        <button class="quick-btn" data-emp="E001" data-msg="I'm employee E001. Can I take 3 days of PTO next week?">PTO request &middot; E001</button>
+        <button class="quick-btn" data-emp="E002" data-msg="I'm employee E002. I want to work from Indonesia for 6 weeks starting next month, is that allowed?">Remote work eligibility &middot; E002</button>
+        <button class="quick-btn" data-emp="" data-msg="What is CPDA's policy on reimbursing a home office chair?">Expense compliance</button>
+        <button class="quick-btn" data-emp="" data-msg="What's the capital of France?">Out-of-scope test</button>
       </div>
-    </form>
-
-    <div class="quick-prompts">
-      <span>Try:</span>
-      <button class="quick-btn" data-emp="E001" data-msg="I'm employee E001. Can I take 3 days of PTO next week?">PTO request (E001)</button>
-      <button class="quick-btn" data-emp="E002" data-msg="I'm employee E002. I want to work from Indonesia for 6 weeks starting next month, is that allowed?">Remote work eligibility (E002)</button>
-      <button class="quick-btn" data-emp="" data-msg="What is CPDA's policy on reimbursing a home office chair?">Expense compliance</button>
-      <button class="quick-btn" data-emp="" data-msg="What's the capital of France?">Out-of-scope test</button>
     </div>
   </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>CivicPulse Digital Agency (CPDA) is a wholly fictional organisation created for a course project. No real company, employee, or government data is used.</span>
+      <a href="https://github.com/strengthandwill/hr-agentic-rag-mcp" target="_blank" rel="noopener">View source on GitHub</a>
+    </div>
+  </footer>
 
   <script src="/static/app.js"></script>
 </body>
